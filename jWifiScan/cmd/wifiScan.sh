@@ -6,4 +6,7 @@ gksudo iwlist $1 scan | awk -F '[ :=]+' '/Address/{printf "\"" substr($0,30)"\",
 
 # >> ./jWiFiScan.csv
 
+### bez zadavani hesla:   
+###     echo -e 'HESLO\n' | sudo -S iwlist wlan0 scan
+
 
