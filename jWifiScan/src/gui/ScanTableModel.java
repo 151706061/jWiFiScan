@@ -57,11 +57,11 @@ public class ScanTableModel extends AbstractTableModel {
 		case 1:
 			return "Kanal";
 		case 2:
-			return "Freq";
+			return "Freq [GHz]";
 		case 3:
 			return "Kvalita";
 		case 4:
-			return "Signal";		
+			return "Signal [dBm]";		
 		case 5:
 			return "Sifrovani";
 		case 6:
