@@ -25,6 +25,8 @@ import model.ScanList;
 import sluzby.SeznamWifiKaret;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class MainWindow extends JFrame implements ListSelectionListener {
@@ -54,8 +56,10 @@ public class MainWindow extends JFrame implements ListSelectionListener {
 		setBounds(100, 100, 594, 353);
 		
 		control = new JPanel();
+		control.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		JPanel scan = new JPanel();
+		scan.setBorder(new LineBorder(new Color(0, 0, 0)));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
