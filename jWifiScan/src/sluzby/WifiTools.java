@@ -4,10 +4,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class SeznamWifiKaret {
+public class WifiTools {
 	static ArrayList<String> wifiIntList;
 	
-	public static ArrayList<String> runCmd(String cmd) {	
+	public static ArrayList<String> getWifiInterfaceList(String cmd) {	
 		wifiIntList = new ArrayList<>();
 		try {
 	        Runtime rt = Runtime.getRuntime();

@@ -1,3 +1,5 @@
+package app;
+
 import gui.MainWindow;
 
 import java.awt.EventQueue;

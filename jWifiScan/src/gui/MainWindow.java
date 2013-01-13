@@ -22,7 +22,7 @@ import javax.swing.event.ListSelectionListener;
 
 import model.Scan;
 import model.ScanList;
-import sluzby.SeznamWifiKaret;
+import sluzby.WifiTools;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
@@ -31,25 +31,25 @@ import java.awt.Color;
 @SuppressWarnings("serial")
 public class MainWindow extends JFrame implements ListSelectionListener {
 	private int scanRefresh = 2; // jak casto skenovat WiFi site
-	private ScanList sl = new ScanList();
+	private ScanList scanlist = new ScanList();
 	
 	private JPanel control;
 	private JComboBox cmbInterface;
 	private JButton btnReloadInterface;
-	private SeznamWifiKaret sw;
+	private WifiTools sw;
 	private DefaultComboBoxModel dcbmWifiInt = new DefaultComboBoxModel<>();
 	private JLabel lblScanTime = new JLabel(Integer.toString(scanRefresh));
 	
 	private JSlider sldScanTime;
 	private JToggleButton tglbtnScan;
 	private JTable tblScan;
-	private ScanTableModel stm = new ScanTableModel();
+	private ScanTableModel scanTblModel = new ScanTableModel();
 
 
 	public MainWindow() {
 		
 		Scan s1 = new Scan("00:22:43:1E:FC:59","11","2.462","70/70","-39","on","VANCL");
-		sl.addScan(s1);
+		scanlist.addScan(s1);
 		
 		setTitle("jWiFiScan");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -81,14 +81,15 @@ public class MainWindow extends JFrame implements ListSelectionListener {
 		);
 		scan.setLayout(new BorderLayout());
 
-		stm.setScanList(sl);
+		scanTblModel.setScanList(scanlist);
 		tblScan = new JTable();
-		tblScan.setModel(stm);
+		tblScan.setModel(scanTblModel);
 		JScrollPane tblScroll = new JScrollPane(tblScan);
 		tblScan.getSelectionModel().addListSelectionListener(this);
 		tblScan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		TableColumnAdjuster tca = new TableColumnAdjuster(tblScan);
 		tca.adjustColumns();	
+		tblScroll.setViewportView(tblScan);
 		scan.add(tblScroll);
 		
 
@@ -182,7 +183,7 @@ public class MainWindow extends JFrame implements ListSelectionListener {
 	 * Nacte seznam vsech WiFi karet v PC a ulozi je do ComboBoxu
 	 */
 	private void loadWifiIntList() {
-		sw.runCmd(" /bin/bash cmd/wifiIntList.sh  ");
+		sw.getWifiInterfaceList(" /bin/bash cmd/wifiIntList.sh  ");
 		dcbmWifiInt.removeAllElements();
 		for (String s : sw.getWifiIntList()) {
 			dcbmWifiInt.addElement(s);
