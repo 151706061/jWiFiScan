@@ -5,9 +5,10 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class SeznamWifiKaret {
-	static ArrayList<String> wifiIntList = new ArrayList<>();
+	static ArrayList<String> wifiIntList;
 	
 	public static ArrayList<String> runCmd(String cmd) {	
+		wifiIntList = new ArrayList<>();
 		try {
 	        Runtime rt = Runtime.getRuntime();
 	        Process pr = rt.exec(cmd);
