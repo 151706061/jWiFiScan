@@ -56,9 +56,10 @@ public class MainWindow extends JFrame implements ListSelectionListener {
 	Timer timer;
 
 	public MainWindow() {
-				
-		Scan s1 = new Scan("00:22:43:1E:FC:59","11","2.462","70/70","-39","on","VANCL");
-		scanlist.addScan(s1);
+			
+		// testovaci data:
+		//Scan s1 = new Scan("00:22:43:1E:FC:59","11","2.462","70/70","-39","on","VANCL");
+		//scanlist.addScan(s1);
 		
 		setTitle("jWiFiScan");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

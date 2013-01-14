@@ -36,7 +36,7 @@ public class WifiTools {
 	        	ArrayList<String> scanResult = new ArrayList<>(5);
 	        	while(st.hasMoreTokens()) {
                     tokenNumber++;
-                    String nacteno = st.nextToken();
+                    String nacteno = st.nextToken().replaceAll("\"", "");
                     scanResult.add(nacteno);
                     System.out.println(nacteno);
                 }
