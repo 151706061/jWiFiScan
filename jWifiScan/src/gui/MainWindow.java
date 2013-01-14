@@ -34,7 +34,7 @@ import javax.swing.JPasswordField;
 @SuppressWarnings("serial")
 public class MainWindow extends JFrame implements ListSelectionListener {
 	private int scanRefresh = 5; // jak casto skenovat WiFi site
-	private ScanList scanlist = new ScanList();
+	private static ScanList scanlist = new ScanList();
 	
 	private JPanel control;
 	private static JComboBox cmbInterface;
@@ -45,8 +45,8 @@ public class MainWindow extends JFrame implements ListSelectionListener {
 	
 	private JSlider sldScanTime;
 	private JToggleButton tglbtnScan;
-	private JTable tblScan;
-	private ScanTableModel scanTblModel = new ScanTableModel();
+	private static JTable tblScan;
+	private static ScanTableModel scanTblModel = new ScanTableModel();
 	private JPanel graph;
 	private Graph img;
 	private JLabel lblNewLabel_2;
@@ -62,7 +62,7 @@ public class MainWindow extends JFrame implements ListSelectionListener {
 		
 		setTitle("jWiFiScan");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 640, 480);
+		setBounds(100, 100, 800, 600);
 		
 		control = new JPanel();
 		control.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -78,9 +78,9 @@ public class MainWindow extends JFrame implements ListSelectionListener {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(graph, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
-						.addComponent(scan, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
-						.addComponent(control, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE))
+						.addComponent(scan, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
+						.addComponent(graph, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
+						.addComponent(control, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -89,9 +89,9 @@ public class MainWindow extends JFrame implements ListSelectionListener {
 					.addContainerGap()
 					.addComponent(control, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scan, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
-					.addGap(60)
-					.addComponent(graph, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+					.addComponent(scan, GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(graph, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
 		graph.setLayout(new BorderLayout());
@@ -104,12 +104,12 @@ public class MainWindow extends JFrame implements ListSelectionListener {
 
 		scanTblModel.setScanList(scanlist);
 		tblScan = new JTable();
-		//tblScan.setModel(scanTblModel);		// NEFUNGUJE WINDOW BUILDER --- ZAKOMENTOVAT PRED EDITACI
+		tblScan.setModel(scanTblModel);		// NEFUNGUJE WINDOW BUILDER --- ZAKOMENTOVAT PRED EDITACI
 		JScrollPane tblScroll = new JScrollPane(tblScan);
 		tblScan.getSelectionModel().addListSelectionListener(this);
 		tblScan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		TableColumnAdjuster tca = new TableColumnAdjuster(tblScan);
-		tca.adjustColumns();	
+		//TableColumnAdjuster tca = new TableColumnAdjuster(tblScan);
+		//tca.adjustColumns();	
 		tblScroll.setViewportView(tblScan);
 		scan.add(tblScroll);
 		
@@ -237,7 +237,26 @@ public class MainWindow extends JFrame implements ListSelectionListener {
 	public static String getSudoPassword() {
 		return sudoPassword;
 	}
+	
 	public static String getSelectedWifiInterface() {
 		return cmbInterface.getSelectedItem().toString();		
 	}
+
+	public static ScanList getScanlist() {
+		return scanlist;
+	}
+
+	public static ScanTableModel getScanTblModel() {
+		return scanTblModel;
+	}
+
+	public static JTable getTblScan() {
+		return tblScan;
+	}
+
+	
+
+	
+	
+	
 }

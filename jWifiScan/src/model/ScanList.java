@@ -17,5 +17,10 @@ public class ScanList {
 	public int numberOfScan() {
 		return scan.size();
 	}
+	
+	public void clearList() {
+		scan.clear();		
+	}
+	
 
 }
