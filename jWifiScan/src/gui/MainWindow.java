@@ -1,5 +1,7 @@
 package gui;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,25 +13,21 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JTable;
 import javax.swing.JToggleButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.Timer;
+import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import model.Scan;
 import model.ScanList;
 import sluzby.WifiTools;
-import java.awt.BorderLayout;
-import javax.swing.JScrollPane;
-import javax.swing.border.LineBorder;
-import java.awt.Color;
-import java.awt.Dimension;
-import javax.swing.JPasswordField;
 
 @SuppressWarnings("serial")
 public class MainWindow extends JFrame implements ListSelectionListener {
@@ -222,7 +220,7 @@ public class MainWindow extends JFrame implements ListSelectionListener {
 	 * Nacte seznam vsech WiFi karet v PC a ulozi je do ComboBoxu
 	 */
 	private void loadWifiIntList() {
-		wt.getWifiInterfaceList(" /bin/bash cmd/wifiIntList.sh  ");
+		wt.getWifiInterfaceList();
 		dcbmWifiInt.removeAllElements();
 		for (String s : wt.getWifiIntList()) {
 			dcbmWifiInt.addElement(s);

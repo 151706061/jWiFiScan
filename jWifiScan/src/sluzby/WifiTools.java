@@ -67,12 +67,11 @@ public class WifiTools {
 		return wifiScan;			
 	}
 	
-	public static ArrayList<String> getWifiInterfaceList(String cmd) {	
+	public static ArrayList<String> getWifiInterfaceList() {	
 		wifiIntList = new ArrayList<>();
 		try {
 	        Runtime rt = Runtime.getRuntime();
-	        Process pr = rt.exec(cmd);
-
+	        Process pr = rt.exec(" /bin/bash cmd/wifiIntList.sh  ");
 	        BufferedReader input = new BufferedReader(new InputStreamReader(pr.getInputStream()));
 
 	        String line=null;
