@@ -46,7 +46,7 @@ public class MainWindow extends JFrame implements ListSelectionListener {
 	private static JTable tblScan;
 	private static ScanTableModel scanTblModel = new ScanTableModel();
 	private JPanel graph;
-	private Graph img;
+	private static Graph img;
 	private JLabel lblNewLabel_2;
 	private JPasswordField passwdSudo;
 	private static String sudoPassword;
@@ -77,8 +77,8 @@ public class MainWindow extends JFrame implements ListSelectionListener {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(scan, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
 						.addComponent(graph, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
+						.addComponent(scan, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
 						.addComponent(control, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE))
 					.addContainerGap())
 		);
@@ -88,18 +88,19 @@ public class MainWindow extends JFrame implements ListSelectionListener {
 					.addContainerGap()
 					.addComponent(control, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scan, GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+					.addComponent(scan, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(graph, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
+					.addComponent(graph, GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		graph.setLayout(new BorderLayout());
 		scan.setLayout(new BorderLayout());
 		//img = new Graph(graph.getWidth(), graph.getHeight());
-		img = new Graph(100, 100);
+		img = new Graph(767, 278);
 		img.clearGraph();
 		graph.add(img, BorderLayout.CENTER);
 		img.drawPixel(20, 20, Color.RED);
+		img.drawGrid();
 
 		scanTblModel.setScanList(scanlist);
 		tblScan = new JTable();
