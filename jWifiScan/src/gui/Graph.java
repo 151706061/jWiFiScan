@@ -65,10 +65,12 @@ public class Graph extends JPanel {
 		int mezeraNahore = 20;
 		int mezeraVlevo = 50;
 		int mezeraMezyRadky = 22;
-		int mezeraMezySloupci = 50;
+		int mezeraMezySloupci = 42;
 		
 		//g.drawLine(0, 0, 100, 100);
 
+		g.setColor(new Color(0xaaaaaa));
+		
 		// RADKY
 		for (int i = 0; i < pocetRadku; i++) {
 			g.drawLine(mezeraVlevo, mezeraNahore + (i*mezeraMezyRadky), 700, mezeraNahore + (i*mezeraMezyRadky));			
@@ -77,16 +79,23 @@ public class Graph extends JPanel {
 		for (int i = 0; i < pocetRadku; i++) {
 			g.drawString(Integer.toString(-i*10), mezeraVlevo - 35, mezeraNahore + (i*mezeraMezyRadky) + 5);		
 		}
+		g.drawString("[dBm]", mezeraVlevo - 35, mezeraNahore + (pocetRadku*mezeraMezyRadky) + 5);
 		// TODO - zarovnani textu vpravo
 		
 		// SLOUPCE
 		for (int i = 0; i < pocetSloupcu; i++) {
-			g.drawLine(mezeraVlevo + (i*mezeraMezySloupci), mezeraNahore, mezeraVlevo + (i*mezeraMezySloupci), 220+mezeraNahore);
+			if (!(i==12)) {
+				g.drawLine(mezeraVlevo + (i*mezeraMezySloupci)+47, mezeraNahore, mezeraVlevo + (i*mezeraMezySloupci)+47, 220+mezeraNahore);
+			}			
 		}
 		
+		// SLOUPCE POPIS
 		for (int i = 0; i < pocetSloupcu; i++) {
-			g.drawString(Integer.toString(i+1), mezeraVlevo + (i*mezeraMezySloupci), 240+mezeraNahore);			
+			if (!(i==12)) {
+				g.drawString(Integer.toString(i+1), mezeraVlevo+45 + (i*mezeraMezySloupci), 240+mezeraNahore);		
+			}
 		}
+		// TODO - zarovnani textu na stred
 		
 	}
 

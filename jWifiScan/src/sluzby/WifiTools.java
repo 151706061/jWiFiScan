@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 import model.Scan;
-import model.ScanList;
 
 public class WifiTools {
 	private static ArrayList<String> wifiIntList;

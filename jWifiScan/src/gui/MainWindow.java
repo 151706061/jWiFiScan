@@ -99,7 +99,7 @@ public class MainWindow extends JFrame implements ListSelectionListener {
 		img = new Graph(767, 278);
 		img.clearGraph();
 		graph.add(img, BorderLayout.CENTER);
-		img.drawPixel(20, 20, Color.RED);
+		//img.drawPixel(20, 20, Color.RED);
 		img.drawGrid();
 
 		scanTblModel.setScanList(scanlist);
