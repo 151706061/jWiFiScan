@@ -1,6 +1,10 @@
 /bin
 *~
 *.class
+
+jWifiScan/forms-1.3.0.jar
+
+
 # Package Files #
 *.jar
 *.war
